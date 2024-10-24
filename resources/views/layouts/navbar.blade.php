@@ -10,7 +10,7 @@
                     <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
+                    <a class="nav-link active" aria-current="page" href="{{route("usuarios.index")}}">Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Habitaciones</a>
