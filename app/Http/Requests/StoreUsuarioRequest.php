@@ -21,14 +21,12 @@ class StoreUsuarioRequest extends FormRequest
      */
     public function rules(): array
     {
-        $usuarioId = $this->route('usuario') instanceof \App\Models\Usuario ? $this->route('usuario')->id_usuario : $this->route('usuario');
-
-        dd($usuarioId);
+        $usuarioId = $this->route('usuario');
         return [
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'email' => 'unique:usuarios,email,' . $usuarioId . ',id_usuario',
-            'telefono' => 'required|digits_between:1,30|numeric',
+            'email' => 'required|unique:usuarios,email,' . $usuarioId . ',id_usuario',
+            'telefono' => 'required|digits_between:1,30',
             'rol' => 'required|in:1,2,3',
         ];
     }
@@ -41,8 +39,7 @@ class StoreUsuarioRequest extends FormRequest
             'email.required' => 'El correo electrónico es obligatorio.',
             'email.unique' => 'Este correo electrónico ya está registrado.',
             'telefono.required' => 'El teléfono es obligatorio.',
-            'telefono.digits_between' => 'El número de teléfono no debe contener más de 30 dígitos.',
-            'telefono.numeric' => 'El número de teléfono debe ser solo números',
+            'telefono.digits_between' => 'El número de teléfono no debe contener más de 30 dígitos y deben ser solo números.',
             'rol.required' => 'El rol es obligatorio.',
             'rol.in' => 'El rol seleccionado no es válido.',
         ];

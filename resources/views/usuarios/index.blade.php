@@ -10,10 +10,17 @@
             <div class="col-12">
                 <h1 class="mb-4">Lista de Usuarios</h1>
                 @if(session('success'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                 @endif
+                @endif
+                @if(session('danger'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('danger') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <table class="table">
                     <thead>
                         <tr>
@@ -48,7 +55,11 @@
                                 <td>
                                     <div class="d-flex">
                                         <a href="{{route('usuarios.edit', $usuario->id_usuario)}}" class="btn btn-secondary" title="Editar usuario"><i class="bi bi-pencil-square"></i></a>
-                                        <a class="btn btn-danger ms-2" title="Borrar usuario"><i class="bi bi-trash-fill"></i></a>
+                                        <form action="{{route('usuarios.destroy', $usuario->id_usuario)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger ms-2" title="Borrar usuario"><i class="bi bi-trash-fill"></i></button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

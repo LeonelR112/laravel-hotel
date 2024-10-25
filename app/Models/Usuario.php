@@ -12,6 +12,5 @@ class Usuario extends Model
         'nombre', 'apellido', 'email', 'telefono', 'rol', 'fecha_registro',
     ];
     protected $primaryKey = 'id_usuario';
-     // Desactivar los timestamps
-     public $timestamps = false;
+    public $timestamps = false;
 }

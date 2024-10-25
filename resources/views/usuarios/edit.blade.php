@@ -4,7 +4,7 @@
     <div class="row m-0 justify-content-center align-items-center">
         <div class="col-12 col-md-6 mt-3 shadow p-3">
             <h2 class="text-center">Editar Usuario</h2>
-            <form action="{{route("usuarios.store")}}" method="post">
+            <form action="{{route("usuarios.update", $usuario->id_usuario)}}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
